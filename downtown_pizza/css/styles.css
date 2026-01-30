@@ -31,10 +31,10 @@ header p {
     opacity: 0.9;
 }
 
-/* Main Grid Layout: Desktop: 1 column, Mobile: 1 column */
+/* Main Grid Layout: Desktop: 2 column, Mobile: 1 column */
 main {
     display: grid;
-    grid-template-columns: 3fr;
+    grid-template-columns: 2fr 1fr;
     gap: 30px;
     max-width: 1400px;
     margin: 0 auto;
@@ -75,40 +75,68 @@ label {
     color: #555;
 }
 
-/* Validatioin Feedback: Show green border for valid inputs, Show red border for invalid inputs */
+/* Select input fields and apply the following styles to them */
+input[type="text"],
+input[type="tel"],
+input[type="number"],
+input[type="datetime-local"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
 
-/* Green border for valid inputs with placeholders (after user starts typing) */
-input:not(:placeholder-shown):valid {
+/* Textarea settings: minimum height and vertical-only resizing */
+textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* Validation Feedback: Show green border for valid inputs, Show red border for invalid inputs */
+
+/* Text inputs: only show green/red after typing */
+input[type="text"]:not(:placeholder-shown):valid,
+input[type="tel"]:not(:placeholder-shown):valid,
+input[type="number"]:not(:placeholder-shown):valid {
     border: 2px solid #4caf50;
 }
 
-/* Green border for valid select (after user selects) */
-select:valid:not([value=""]) {
-    border: 2px solid #4caf50;
-}
-
-/* Red border for invalid inputs ONLY after user starts typing */
-input:not(:placeholder-shown):invalid {
+input[type="text"]:not(:placeholder-shown):invalid,
+input[type="tel"]:not(:placeholder-shown):invalid,
+input[type="number"]:not(:placeholder-shown):invalid {
     border: 2px solid #d55454;
 }
 
-/* Red border for invalid select when focused */
-select:focus:invalid {
-    border: 2px solid #d55454;
-}
-
-/* Special handling for datetime-local (no placeholder) */
-input[type="datetime-local"]:focus:invalid {
-    border: 2px solid #d55454;
+/* Datetime: gray by default, only green when valid */
+input[type="datetime-local"] {
+    border: 2px solid #ccc;
 }
 
 input[type="datetime-local"]:valid {
     border: 2px solid #4caf50;
 }
 
-/* Radito Buttons (Flexbox) */
+/* Select: gray by default, only green when valid*/
+select {
+    border: 2px solid #ccc;
+}
+
+select:valid:not([value=""]) {
+    border: 2px solid #4caf50;
+}
+
+/* Textarea: always gray */
+textarea {
+    border: 2px solid #ccc;
+}
+
+/* Radio Buttons */
 .radio-group {
     display: flex;
+    gap: 20px;
 }
 
 .radio-group label {
@@ -153,7 +181,7 @@ input[type="datetime-local"]:valid {
     gap: 15px;
     justify-content: center;
     margin-top: 20px;
-    grid-column: 1 / -1; 
+    grid-column: 1 / -1;
 }
 
 button {
@@ -227,7 +255,6 @@ tbody tr:hover {
 }
 
 /* Total row styling */
-/* Ensures that the total row is yellow and that the hover does not occur. Additionally adds a red border at the top*/
 .total-row {
     background: #fff3cd !important;
     font-weight: bold;
