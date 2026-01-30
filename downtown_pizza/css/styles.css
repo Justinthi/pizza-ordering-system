@@ -1,0 +1,279 @@
+/* Global Styles */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* Header */
+header {
+    text-align: center;
+    padding: 30px 20px;
+    background: #d55454;
+    color: white;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 19px;
+    opacity: 0.9;
+}
+
+/* Main Grid Layout: Desktop: 1 column, Mobile: 1 column */
+main {
+    display: grid;
+    grid-template-columns: 3fr;
+    gap: 30px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Form Styling */
+form {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Fieldset styling */
+fieldset {
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 25px;
+    background: #fafafa;
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 15px;
+    align-items: center;
+}
+
+legend {
+    font-size: 21px;
+    font-weight: bold;
+    color: #d55454;
+    padding: 0 10px;
+}
+
+/* Labels - right-aligned in the 150px column */
+label {
+    text-align: right;
+    font-weight: 600;
+    color: #555;
+}
+
+/* Validatioin Feedback: Show green border for valid inputs, Show red border for invalid inputs */
+
+/* Green border for valid inputs with placeholders (after user starts typing) */
+input:not(:placeholder-shown):valid {
+    border: 2px solid #4caf50;
+}
+
+/* Green border for valid select (after user selects) */
+select:valid:not([value=""]) {
+    border: 2px solid #4caf50;
+}
+
+/* Red border for invalid inputs ONLY after user starts typing */
+input:not(:placeholder-shown):invalid {
+    border: 2px solid #d55454;
+}
+
+/* Red border for invalid select when focused */
+select:focus:invalid {
+    border: 2px solid #d55454;
+}
+
+/* Special handling for datetime-local (no placeholder) */
+input[type="datetime-local"]:focus:invalid {
+    border: 2px solid #d55454;
+}
+
+input[type="datetime-local"]:valid {
+    border: 2px solid #4caf50;
+}
+
+/* Radito Buttons (Flexbox) */
+.radio-group {
+    display: flex;
+}
+
+.radio-group label {
+    text-align: left;
+    font-weight: normal;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.radio-group input[type="radio"] {
+    width: auto;
+    cursor: pointer;
+}
+
+/* Checkboxes (Flexbox with wrap) Wrapping layout for multiple options */
+.checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.checkbox-group label {
+    text-align: left;
+    font-weight: normal;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    min-width: 140px;
+    cursor: pointer;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: auto;
+    cursor: pointer;
+}
+
+/* Buttons (Flexbox) */
+.button-group {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+    grid-column: 1 / -1; 
+}
+
+button {
+    padding: 12px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button[type="submit"] {
+    background: #d55454;
+    color: white;
+}
+
+button[type="reset"] {
+    background: #757575;
+    color: white;
+}
+
+/* Order Summary Table */
+aside {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    align-self: start; /* Don't stretch full height */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+caption {
+    font-size: 24px;
+    font-weight: bold;
+    color: #d55454;
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+thead {
+    background: #d55454;
+    color: white;
+}
+
+th {
+    padding: 12px;
+    text-align: left;
+    font-weight: bold;
+}
+
+td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Zebra striping for tbody rows */
+tbody tr:nth-child(even) {
+    background: #f5f5f5;
+}
+
+/* Hover effect on rows */
+tbody tr:hover {
+    background: #e3f2fd;
+    transition: background 0.2s ease;
+}
+
+/* Total row styling */
+/* Ensures that the total row is yellow and that the hover does not occur. Additionally adds a red border at the top*/
+.total-row {
+    background: #fff3cd !important;
+    font-weight: bold;
+    border-top: 2px solid #d55454;
+}
+
+.total-row:hover {
+    background: #fff3cd !important;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 30px;
+    color: #666;
+}
+
+/* Response Design - Mobile First: Max-width: 600px switches to 1 column */
+@media (max-width: 600px) {
+    /* Stack form and aside vertically */
+    main {
+        grid-template-columns: 1fr;
+    }
+
+    /* Stack labels above inputs in forms */
+    fieldset {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    label {
+        text-align: left;
+    }
+
+    /* Adjust header */
+    header h1 {
+        font-size: 29px;
+    }
+
+    header p {
+        font-size: 16px;
+    }
+
+    /* Make table scrollable if needed */
+    aside {
+        overflow-x: auto;
+    }
+}
